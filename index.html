@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="bootstrap-5.3.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <style>
+        a:link, a:visited, a:hover, a:active{
+            text-decoration: none;
+        }
+        .text-red{
+            color: red;
+        }
+    </style>
+    <title>MCA I Sem SGPA Calculator</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">MCA SGPA CALCULATOR</a>
+        </div>
+      </nav>
+      <div class="container mt-4">
+        <h1 class="text-center">MCA II Sem SGPA Calculator</h1>
+        <div class="card mt-3 p-4">
+            <div class="form-group">
+                <label for="mfca" class="m-2">Database Management System (22MCA21)</label>
+                <input type="number" class="form-control m-2" id="dbms"  placeholder="Enter your marks">
+            </div>
+            <div class="form-group">
+                <label for="mfca" class="m-2">Object Oriented Programming Using Java (22MCA22)</label>
+                <input type="number" class="form-control m-2" id="java"  placeholder="Enter your marks">
+            </div>
+            <div class="form-group">
+                <label for="mfca" class="m-2">Software Engineering (22MCA23)</label>
+                <input type="number" class="form-control m-2" id="se"  placeholder="Enter your marks">
+            </div>
+            <div class="form-group">
+                <label for="mfca" class="m-2">Web Technologies (22MCA24)</label>
+                <input type="number" class="form-control m-2" id="wt"  placeholder="Enter your marks">
+            </div>
+            <div class="form-group">
+                <label for="mfca" class="m-2">Professional Elective 1 (22MCA25X)</label>
+                <input type="number" class="form-control m-2" id="el1"  placeholder="Enter your marks">
+            </div>
+            <div class="form-group">
+                <label for="mfca" class="m-2">Professional Elective 2 (22MCA26X)</label>
+                <input type="number" class="form-control m-2" id="el2"  placeholder="Enter your marks">
+            </div>
+            <div class="form-group">
+                <label for="mfca" class="m-2">DBMS Laboratory (22MCAL27)</label>
+                <input type="number" class="form-control m-2" id="dbmsl"  placeholder="Enter your marks">
+            </div>
+            <div class="form-group">
+                <label for="mfca" class="m-2">Java Programming Laboratory (22MCAL28)</label>
+                <input type="number" class="form-control m-2" id="javal"  placeholder="Enter your marks">
+            </div>
+            <div class="form-group">
+                <label for="mfca" class="m-2">SEMINAR (22MCA29)</label>
+                <input type="number" class="form-control m-2" id="seminar"  placeholder="Enter your marks">
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary m-2" onclick="calculate()">Calculate</button>
+                <button class="btn btn-warning m-2" onclick="reset()">Reset</button>
+            </div>
+            <div class="" id="result"> 
+            </div>
+          </div>
+      </div>
+      <div class="container mt-3">
+            <h3 class="text-center" >
+                Made with <i class="fa fa-heart pulse text-red"></i> by <a href="https://github.com/yogeesh-s">Yogeesh S</a>
+          </h3>
+      </div>
+      <script>
+            function calculate(){
+                let dbms = parseInt(document.getElementById("mfca").value);
+                let java = parseInt(document.getElementById("osc").value);
+                let se = parseInt(document.getElementById("ds").value);
+                let wt = parseInt(document.getElementById("cn").value);
+                let el1 = parseInt(document.getElementById("daa").value);
+                let el2 = parseInt(document.getElementById("dsal").value);
+                let dbmsl = parseInt(document.getElementById("cnl").value);
+                let javal = parseInt(document.getElementById("rmipr").value);
+                let seminar = parseInt(document.getElementById("rmipr").value);
+
+
+                let sgpa = ( gradepoint(dbms)*3 + gradepoint(java)*3 + gradepoint(se)*4 + gradepoint(wt)*4 + gradepoint(el1)*3 + gradepoint(el2)*3 + gradepoint(dbmsl)*2 + gradepoint(javal)*2 + gradepoint(seminar)*2) / 26;
+                sgpa = sgpa.toFixed(2);
+                alert("Your SGPA is: "+ sgpa)
+
+                document.getElementById("result").className="alert alert-success mt-3";
+                document.getElementById("result").innerHTML = "<b>Your SGPA is "+ sgpa +"<b>";
+                window.scrollTo(0, 1000);
+            }
+            function gradepoint(marks){
+                if(marks>=90 && marks <=100)
+                    return 10;
+                else if(marks>=80 && marks <=89)
+                    return 9;
+                else if(marks>=70 && marks <=79)
+                    return 8;
+                else if(marks>=60 && marks <=69)
+                    return 7;
+                else if(marks>=55 && marks <=59)
+                    return 6;
+                else if(marks>=50 && marks <=54)
+                    return 5;
+                else
+                    return 0;
+            }
+            function reset(){
+                document.getElementById("dbms").value = "";
+                document.getElementById("java").value = "";
+                document.getElementById("se").value = "";
+                document.getElementById("wt").value = "";
+                document.getElementById("el1").value = "";
+                document.getElementById("el2").value = "";
+                document.getElementById("dbmsl").value = "";
+                document.getElementById("javal").value = "";
+                document.getElementById("seminar").value = "";
+                document.getElementById("result").innerHTML = "";
+                document.getElementById("result").className = "";
+                window.scrollTo(0, 0);
+            }
+      </script>
+</body>
+</html>
